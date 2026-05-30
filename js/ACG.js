@@ -1879,7 +1879,7 @@ async function addCardWithImageCheck(imagePath, count, cardType, targetSpace) {
         for (let i = 0; i < count; i++) {
             let img_element = document.createElement("img");
             img_element.src = imagePath;
-            img_element.alt = `${cardType}:${imagePath}`;
+            img_element.alt = `${cardType}:` + img_element.src;
             img_element.width = "126";
             img_element.height = "176";
 
@@ -1892,6 +1892,8 @@ async function addCardWithImageCheck(imagePath, count, cardType, targetSpace) {
                 document.getElementById("CardReverse").onclick = function hoge() {
                     alt = img_element.alt;
                     src = img_element.src;
+                    console.log(src);
+                    console.log(alt.substr(alt.indexOf(':') + 1));
                     if (src == alt.substr(alt.indexOf(':') + 1)) {
                         if (alt.substr(0, alt.indexOf(':')) == "Deck") {
                             let Sleeve = document.getElementById("SleeveSpace")
